@@ -1,51 +1,30 @@
 package com.bomesmo.joguinho;
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.shapes.Shape;
 
 /**
  * Created by Lucas on 27/03/2018.
  */
 
-public class Player {
+public class Player extends Entity{
 
-    private float posX;
-    private float posY;
-
-    public Player() {
-        this.posX = 100;
-        this.posY = 100;
+    public Player(String name) {
+        super(name);
     }
 
-    public Player(float posX, float posY) {
-        this.posX = posX;
-        this.posY = posY;
+    public Player(String name, float x, float y) {
+        super(name, x, y);
     }
 
-    public void update(float newX, float newY){
-        setPosX(newX);
-        setPosY(newY);
-    }
-
-    public float getPosX() {
-        return posX;
-    }
-
-    public void setPosX(float posX) {
-        this.posX = posX;
-    }
-
-    public float getPosY() {
-        return posY;
-    }
-
-    public void setPosY(float posY) {
-        this.posY = posY;
+    @Override
+    public void update(float nX, float nY) {
+        setX(nX);
+        setY(nY);
     }
 
     @SuppressLint("DefaultLocale")
     @Override
     public String toString() {
-        return Debugger.debug(String.format("X: %f|Y: %f", this.getPosX(), this.getPosY()), Debugger.Level.INFO);
+        return Debugger.debug(String.format("%s, X: %f|Y: %f", this.getName(), this.getX(), this.getY()), Debugger.Level.INFO);
     }
 }
